@@ -26,10 +26,30 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-surround'
+" Yet Another JavaScript Syntax
+Plugin 'othree/yajs.vim'
 
-Plugin 'morhetz/gruvbox'
+" HTML5 + inline SVG omnicomplete function, indent and syntax for Vim.
+Plugin 'othree/html5.vim'
+
+" The React syntax highlighting and indenting plugin for vim.
+Plugin 'maxmellon/vim-jsx-pretty'
+
+" Opinionated code formatter
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+" Проверка на синтаксисические и семантические ошибки
+Plugin 'https://github.com/dense-analysis/ale'
+
+" Insert or delete brackets, parens, quotes in pair
+Plugin 'jiangmiao/auto-pairs'
+
+" Плагин Emmet
+Plugin 'mattn/emmet-vim'
+
+" Подсветка
+Plugin 'mhartington/oceanic-next'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,11 +107,11 @@ set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
-set guifont=Monaco:h18
-let g:gruvbox_italic=1
-set bg=dark
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+" OceanicNext color for vim 8
+ if (has("termguicolors"))
+  set termguicolors
+ endif
+colorscheme OceanicNext
 
 " Выключаем звук в Vim
 set visualbell t_vb=
@@ -131,3 +151,15 @@ set complete=""
 set complete+=.
 set complete+=b
 set complete+=t
+
+" Плагин ALE
+nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
+nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error
+noremap <leader>a :ALEToggle<CR>
+let g:ale_enabled = 0
+
+" Плагин Prettier
+" Замена команды :Prettier на комбинацию клавиш gp
+nnoremap gp :silent %!prettier --stdin-filepath %<CR>
+
+let g:netrw_winsize = 25 " размер окна открываемое через команду Explore
