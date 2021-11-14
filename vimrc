@@ -56,7 +56,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Настройки табов для Python, согласно рекоммендациям
-<<<<<<< HEAD
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smarttab 
 " Общие настройки табов
 set tabstop=2 
@@ -65,13 +64,6 @@ set smarttab
 set expandtab "Ставим табы пробелами
 set softtabstop=2 "2 пробела в табе
 
-=======
-set tabstop=4 
-set shiftwidth=4
-set smarttab
-set expandtab "Ставим табы пробелами
-set softtabstop=4 "4 пробела в табе
->>>>>>> 3dca4f11c97000933c9fa00490375662b1d08b70
 " Автоотступ
 set autoindent
 " Подсвечиваем все что можно подсвечивать
