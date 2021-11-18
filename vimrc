@@ -4,8 +4,9 @@ call plug#begin('~/.vim/plugged')
 
 " Fugitive is :Git (or just :G), which calls any arbitrary Git command.
 Plug 'tpope/vim-fugitive'
-" Plugin for: Opening files and buffers, Jumping to tags and help, Running commands, or previous searches and commands
-Plug 'wincent/command-t'
+" fzf is a general-purpose command-line fuzzy finder.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
 
@@ -136,5 +137,10 @@ let g:ale_enabled = 0
 
 " Плагин Prettier. Замена команды :Prettier на комбинацию клавиш gp
 nnoremap gp :silent %!prettier --stdin-filepath %<CR>
+
+" Плагин FZF (FZF.vim)
+nmap ; :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
 
 let g:netrw_winsize = 25 " размер окна открываемое через команду Explore
