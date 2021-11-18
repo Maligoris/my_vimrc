@@ -1,58 +1,31 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype off " required
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+" Fugitive is :Git (or just :G), which calls any arbitrary Git command.
+Plug 'tpope/vim-fugitive'
+" Plugin for: Opening files and buffers, Jumping to tags and help, Running commands, or previous searches and commands
+Plug 'wincent/command-t'
+" Insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'
 
 " Yet Another JavaScript Syntax
-Plugin 'othree/yajs.vim'
-
+Plug 'othree/yajs.vim'
 " HTML5 + inline SVG omnicomplete function, indent and syntax for Vim.
-Plugin 'othree/html5.vim'
-
+Plug 'othree/html5.vim'
 " The React syntax highlighting and indenting plugin for vim.
-Plugin 'maxmellon/vim-jsx-pretty'
-
+Plug 'maxmellon/vim-jsx-pretty'
 " Opinionated code formatter
-Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
-
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Проверка на синтаксисические и семантические ошибки
-Plugin 'https://github.com/dense-analysis/ale'
-
-" Insert or delete brackets, parens, quotes in pair
-Plugin 'jiangmiao/auto-pairs'
-
+Plug 'https://github.com/dense-analysis/ale'
 " Плагин Emmet
-Plugin 'mattn/emmet-vim'
-
+Plug 'mattn/emmet-vim'
 " Подсветка
-Plugin 'mhartington/oceanic-next'
+Plug 'mhartington/oceanic-next'
 
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" Initialize plugin system
+call plug#end()
 filetype plugin indent on    " required
 
 " Настройки табов для Python, согласно рекоммендациям
@@ -161,8 +134,7 @@ nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error
 noremap <leader>a :ALEToggle<CR>
 let g:ale_enabled = 0
 
-" Плагин Prettier
-" Замена команды :Prettier на комбинацию клавиш gp
+" Плагин Prettier. Замена команды :Prettier на комбинацию клавиш gp
 nnoremap gp :silent %!prettier --stdin-filepath %<CR>
 
 let g:netrw_winsize = 25 " размер окна открываемое через команду Explore
