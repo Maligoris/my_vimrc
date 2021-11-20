@@ -16,6 +16,9 @@ Plug 'othree/yajs.vim'
 Plug 'othree/html5.vim'
 " The React syntax highlighting and indenting plugin for vim.
 Plug 'maxmellon/vim-jsx-pretty'
+" Javascript and Typescript vim snippets for developing React applications.
+Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
 " Opinionated code formatter
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Проверка на синтаксисические и семантические ошибки
@@ -84,10 +87,14 @@ set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
+" netrw древовидный вид (Можно менять нажатием i в netrw)
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25 " размер окна открываемое через команду Explore
+
 " OceanicNext color for vim 8
- if (has("termguicolors"))
+if (has("termguicolors"))
   set termguicolors
- endif
+endif
 colorscheme OceanicNext
 
 " Выключаем звук в Vim
@@ -115,14 +122,15 @@ noremap <A-k> gt
 
 "Сделать автодополнение на Tab
 function InsertTabWrapper()
-let col=col('.') - 1
-if !col || getline('.')[col - 1] !~ '\k'
-return "\<tab>"
-else
-return "\<c-p>"
+  let col=col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
-
-imap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
 
 set complete=""
 set complete+=.
@@ -142,5 +150,3 @@ nnoremap gp :silent %!prettier --stdin-filepath %<CR>
 nmap ; :Buffers<CR>
 nmap <Leader>f :Files<CR>
 nmap <Leader>t :Tags<CR>
-
-let g:netrw_winsize = 25 " размер окна открываемое через команду Explore
