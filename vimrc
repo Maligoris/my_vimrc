@@ -10,6 +10,8 @@ Plug 'junegunn/fzf.vim'
 " Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
 
+" tpope/vim-commentary: comment stuff out.
+Plug 'tpope/vim-commentary'
 " Yet Another JavaScript Syntax
 Plug 'othree/yajs.vim'
 " HTML5 + inline SVG omnicomplete function, indent and syntax for Vim.
@@ -57,7 +59,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 syntax on "Включить подсветку синтаксиса
 
 " Устанавливает рабочую папку в месте открытия файла 
-autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
+set autochdir
 "set nu "Включаем нумерацию строк
 set number relativenumber " релятивная нумерация
 set mousehide "Спрятать курсор мыши когда набираем текст
@@ -87,9 +89,9 @@ set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
-" netrw древовидный вид (Можно менять нажатием i в netrw)
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 25 " размер окна открываемое через команду Explore
+let g:netrw_liststyle = 3 " netrw древовидный вид (Можно менять нажатием i в netrw)
+let g:netrw_banner = 0 " Убрать подсказку
+let g:netrw_winsize = 30 " размер окна открываемое через команду Explore
 
 " OceanicNext color for vim 8
 if (has("termguicolors"))
