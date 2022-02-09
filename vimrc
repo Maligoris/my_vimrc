@@ -4,14 +4,14 @@ call plug#begin('~/.vim/plugged')
 
 " Fugitive is :Git (or just :G), which calls any arbitrary Git command.
 Plug 'tpope/vim-fugitive'
+" tpope/vim-commentary: comment stuff out.
+Plug 'tpope/vim-commentary'
 " fzf is a general-purpose command-line fuzzy finder.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
 
-" tpope/vim-commentary: comment stuff out.
-Plug 'tpope/vim-commentary'
 " Yet Another JavaScript Syntax
 Plug 'othree/yajs.vim'
 " HTML5 + inline SVG omnicomplete function, indent and syntax for Vim.
@@ -138,6 +138,22 @@ set complete=""
 set complete+=.
 set complete+=b
 set complete+=t
+
+" Команда :make (если в текущем каталоне нет файла Makefile, перейти в родительский каталог)
+fun! SetMkfile()
+  let filemk = "Makefile"
+  let pathmk = "./"
+  let depth = 1
+  while depth < 4
+    if filereadable(pathmk . filemk)
+      return pathmk
+    endif
+    let depth += 1
+    let pathmk = "../" . pathmk
+  endwhile
+  return "."
+endf
+command! -nargs=* Make tabnew | let $mkpath = SetMkfile() | make <args> -C $mkpath | cwindow 10
 
 " Плагин ALE
 nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
