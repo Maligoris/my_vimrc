@@ -11,6 +11,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
+" Unload, delete or wipe a buffer without closing the window or split
+Plug 'qpkorr/vim-bufkill'
 
 " Yet Another JavaScript Syntax
 Plug 'othree/yajs.vim'
@@ -75,6 +77,9 @@ set showtabline=1
 " Переносим на другую строчку, разрываем строки
 set wrap
 set linebreak
+
+" позволит избежать сообщений об ошибке при попытке закрыть(удалить) буфер с не сохраненными изменениями. Вместо ошибки будет появляться подтверждение закрытия не сохраненного файла
+set confirm
 
 " Вырубаем .swp и ~ (резервные) файлы
 set nobackup
@@ -168,3 +173,4 @@ nnoremap gp :silent %!prettier --stdin-filepath %<CR>
 nmap ; :Buffers<CR>
 nmap <Leader>f :Files<CR>
 nmap <Leader>t :Tags<CR>
+
