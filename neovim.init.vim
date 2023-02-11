@@ -16,7 +16,7 @@ Plug 'tpope/vim-commentary'
 
 " Цветовая палитра
 Plug 'mhartington/oceanic-next'
-" Подсветка treesitte парсинг кода, подсветка
+" Treesitter парсинг кода, подсветка
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
